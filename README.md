@@ -3,4 +3,4 @@
 
 ![Icono Python](iconoPython.png)
 
-![Icono Django](django-logo-1280x720.png)
+![Icono Django](django_logo1.png)
