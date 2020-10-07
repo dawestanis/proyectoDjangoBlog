@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 class Usuario(AbstractUser):
-    id_usuario = models.CharField(max_length=100, blank=True, null=True)
+    id = models.CharField(max_length=100, blank=True, null=True)
 
 
 class Categoria(models.Model):
@@ -23,8 +23,10 @@ class Post(models.Model):
     descripcion = models.CharField(max_length=125)
     fecha = models.DateTimeField(auto_now_add=True)
     contenido = models.TextField()
-    categoria = models.ForeignKey(Categoria, related_name='post_category',
+    categoria = models.ForeignKey(Categoria, related_name='post_categoria',
                                   on_delete=models.CASCADE, default=1)
+    id_usuario = models.ForeignKey(Usuario, related_name='id_usuario',
+                                   on_delete=models.CASCADE, default=1)
     image = models.ImageField("Image", blank=True, null=True, upload_to="media/post/imagenes")
 
     def __str__(self):
@@ -37,3 +39,5 @@ class Comentario(models.Model):
     autor = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, related_name='post_comentario',
                              on_delete=models.CASCADE, default=1)
+    usuario = models.ForeignKey(Usuario, related_name='comentario_usuario',
+                                on_delete=models.CASCADE, default=1)
