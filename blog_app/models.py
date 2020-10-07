@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 class Usuario(AbstractUser):
-    pass
+    id_usuario = models.CharField(max_length=100, blank=True, null=True)
 
 
 class Categoria(models.Model):
