@@ -30,6 +30,10 @@ class Post(models.Model):
     def __str__(self):
         return self.titulo + ' | ' + self.autor.username
 
+    class Meta:
+        # Ordena los post por ID
+        ordering = ['-id']
+
 
 class Comentario(models.Model):
     comentario = models.TextField()

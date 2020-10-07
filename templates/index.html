@@ -1,19 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Estanis">
-    <title>index</title>
-</head>
-<body>
-    {%for post in lista%}
+{% extends 'base.html'%}
+{%block titulo%}Index{%endblock%}
+{%block contenido%}
 
-    <h3>{{post.titulo}}</h3>
-    <p>{{post.contenido}}</p>
-    {% empty %}
-    <h2>No hay nada</h2>
-    {%endfor%}
+ <div class="col-md-8 blog-main">
+    <div class="row mb-2">
+        {%for post in page_obj%}
+        <div class="col-md-6">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-success">{{post.categoria| title}}</strong>
+                    <h3 class="mb-0">{{post.titulo|truncatechars:40}}</h3>
+                    <div class="mb-1 text-muted">{{post.fecha|date:'H:i Y d, M' }} Por {{post.autor.username}}</div>
+                    <p class="mb-auto">{{post.descripcion|truncatechars:120}}</p>
+                    <a href="" class="stretched-link">Leer más</a>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+        <li>
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled"><span class="page-link disabled">Previous</span></li>
+        {% endif %}
+        {% for i in paginator.page_range %}
+        {% if page_obj.number == i %}
+        <li class="page-item active"><span class="page-link" >{{ i }} <span class="sr-only">(current)</span></span></li>
+        {% else %}
+        <li class="page-item" ><a  class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+        {% else %}
+        <li class="page-item disabled"><span class="page-link">Next</span></li>
+        {% endif %}
+    </ul>
+</div><!-- /.blog-main -->
 
-</body>
-</html>
+{%endblock%}
