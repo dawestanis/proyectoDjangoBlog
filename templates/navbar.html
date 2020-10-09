@@ -17,9 +17,9 @@
                     </svg>
                 </a>
                 {% if not request.user.is_active %}
-                <a class="btn btn-sm btn-outline-secondary" href="">Login</a>
+                <a class="btn btn-sm btn-outline-secondary" href="{% url 'login' %}">Login</a>
                 {% else %}
-                <a class="btn btn-sm btn-outline-secondary" href="">Logout</a>
+                <a class="btn btn-sm btn-outline-secondary" href="{% url 'logout' %}">Logout</a>
                 {%endif%}
 
             </div>
@@ -31,6 +31,4 @@
             <a class="p-2 text-muted" href="">Home</a>
         </nav>
     </div>
-
-
 </div>
