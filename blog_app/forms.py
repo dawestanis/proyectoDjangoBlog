@@ -1,4 +1,4 @@
-from django.forms import ModelForm, TextInput, Select, ImageField, FileInput, Textarea
+from django.forms import forms, ModelForm, TextInput, Select, ImageField, FileInput, Textarea
 
 from blog_app.models import Post
 

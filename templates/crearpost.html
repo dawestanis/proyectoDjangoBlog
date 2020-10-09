@@ -1,0 +1,23 @@
+{% extends 'base.html'%} {%block titulo%}Index{%endblock%} {%block contenido%}
+<form class="form" method="post" enctype="multipart/form-data" >
+    {%csrf_token%} <!-- Añadimos este token para verificar la procedencia del formulario--->
+    <div class="row">
+      <div class="col-6">Título: {{form.titulo}}</div>
+      <div class="col-6">Descripción: {{form.descripcion}}</div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-6">Imagen: {{form.image}}</div>
+      <div class="col-6">Categoría: {{form.categoria}}</div>
+    </div>
+    <br />
+
+    Contenidos:<br><br>
+    {{form.contenido}}
+
+    <br />
+    <br />
+    <input type="submit" value="Publicar" class="btn btn-primary btn-block">
+</form>
+
+{%endblock%}
