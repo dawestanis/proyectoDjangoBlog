@@ -17,8 +17,9 @@ class index(View):
 
         return render(request, "index.html", {"page_obj": page_obj})
 
-
+#hay que poner el login required (solo los usuarios logeados)
 class CrearPostView(View):
+    #Crear los permisos de creacion de post (revisar)
 
     def get(self, request):
         post = PostForm()
@@ -45,3 +46,5 @@ class CrearPostView(View):
             print(e)
 
         return render(request, "crearpost.html", {"form": post_form})
+
+#Debo crear un metodo que devuelva las categorias.
