@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -18,7 +19,7 @@ class index(View):
         return render(request, "index.html", {"page_obj": page_obj})
 
 #hay que poner el login required (solo los usuarios logeados)
-class CrearPostView(View):
+class CrearPostView(LoginRequiredMixin,View):
     #Crear los permisos de creacion de post (revisar)
 
     def get(self, request):

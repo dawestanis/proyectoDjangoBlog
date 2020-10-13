@@ -122,3 +122,4 @@ AUTH_USER_MODEL = 'blog_app.Usuario'
 # seteamos la url de la redireccion.
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGOUT_REDIRECT_URL = reverse_lazy('index')
+LOGIN_URL = '/usuario/login/'
