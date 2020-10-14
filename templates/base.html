@@ -9,187 +9,38 @@
     <meta name="generator" content="Jekyll v4.0.1">
     <title>{% block titulo%}Blog{%endblock%}</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/blog/">
+ <!--   <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/blog/">  -->
 
     <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link href="{%static 'css/bootstrap.min.css'%}" rel="stylesheet"
           crossorigin="anonymous">
 
     <meta name="theme-color" content="#563d7c">
-
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-      /* stylelint-disable selector-list-comma-newline-after */
-
-.blog-header {
-  line-height: 1;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.blog-header-logo {
-  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-  font-size: 2.25rem;
-}
-
-.blog-header-logo:hover {
-  text-decoration: none;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-}
-
-.display-4 {
-  font-size: 2.5rem;
-}
-@media (min-width: 768px) {
-  .display-4 {
-    font-size: 3rem;
-  }
-}
-
-.nav-scroller {
-  position: relative;
-  z-index: 2;
-  height: 2.75rem;
-  overflow-y: hidden;
-}
-
-.nav-scroller .nav {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  padding-bottom: 1rem;
-  margin-top: -1px;
-  overflow-x: auto;
-  text-align: center;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
-
-.nav-scroller .nav-link {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
-  font-size: .875rem;
-}
-
-.card-img-right {
-  height: 100%;
-  border-radius: 0 3px 3px 0;
-}
-
-.flex-auto {
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-}
-
-.h-250 { height: 250px; }
-@media (min-width: 768px) {
-  .h-md-250 { height: 250px; }
-}
-
-/* Pagination */
-.blog-pagination {
-  margin-bottom: 4rem;
-}
-.blog-pagination > .btn {
-  border-radius: 2rem;
-}
-
-/*
- * Blog posts
- */
-.blog-post {
-  margin-bottom: 4rem;
-}
-.blog-post-title {
-  margin-bottom: .25rem;
-  font-size: 2.5rem;
-}
-.blog-post-meta {
-  margin-bottom: 1.25rem;
-  color: #999;
-}
-
-/*
- * Footer
- */
-.blog-footer {
-  padding: 2.5rem 0;
-  color: #999;
-  text-align: center;
-  background-color: #f9f9f9;
-  border-top: .05rem solid #e5e5e5;
-}
-.blog-footer p:last-child {
-  margin-bottom: 0;
-}
-
-    </style>
-    <!-- Custom styles for this template -->
+      <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{%static 'css/estilos.css' %}?v=1.0.0">
+
+
 </head>
 <body>
 {% include 'navbar.html' %}
 
 <main role="main" class="container">
     <div class="row">
-<div class="col-md-8 blog-main">
         {%block contenido%}
 
         {% endblock %}
-</div>
-        <aside class="col-md-4 blog-sidebar">
-            <div class="p-4 mb-3 bg-light rounded">
-                <h4 class="font-italic">Acerca de...</h4>
-                <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus
-                    sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-            </div>
 
+        {%block lateral%}
 
-            {% comment %}
-                <div class="p-4">
-                    <h4 class="font-italic">Categorias</h4>
-                    <ol class="list-unstyled mb-0">
-                        <li><a href="/category/1">Juegos de Rol</a></li>
-                        <li><a href="/category/2">Juegos de mesa</a></li>
-                        <li><a href="/category/3">Juegos de cartas</a></li>
-                    </ol>
-                </div>
-            {% endcomment %}
-
-            <div class="p-4">
-                <h4 class="font-italic">Recursos</h4>
-                <ol class="list-unstyled">
-                    <li><a target="_blank" href="https://github.com/dawestanis">GitHub</a></li>
-                    <li><a target="_blank" href="https://twitter.com/home?lang=es">Twitter</a></li>
-                    <li><a target="_blank" href="https://es-es.facebook.com/">Facebook</a></li>
-                </ol>
-            </div>
-        </aside><!-- /.blog-sidebar -->
-
+        {%endblock%}
     </div><!-- /.row -->
 
 </main><!-- /.container -->
 
 <footer class="blog-footer">
-    <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.
+    <p>Hecho por Estanis
     </p>
     <p>
         <a href="#">Back to top</a>

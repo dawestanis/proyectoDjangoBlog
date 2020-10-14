@@ -1,11 +1,17 @@
+{%load static%}
 <div class="container">
     <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
+
             <div class="col-4 pt-1">
+                {% comment %}
                 <a class="text-muted" href="#">Suscripción</a>
+                {% endcomment %}
+                <img src="{% static 'img/d20.png'%}" class="img-fluid" height="80" width="80">
             </div>
+
             <div class="col-4 text-center">
-                <a class="blog-header-logo text-dark" href="#">La Guarida del Dragón</a>
+                <a class="blog-header-logo text-light" href="#">La Guarida del Dragón</a>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
                 <a class="text-muted" href="#" aria-label="Search">
@@ -17,18 +23,23 @@
                     </svg>
                 </a>
                 {% if not request.user.is_active %}
-                <a class="btn btn-sm btn-outline-secondary" href="{% url 'login' %}">Login</a>
+                <a class="btn btn-sm  mr-2 boton" href="{% url 'login' %}">Login</a>
+                <a class="btn btn-sm  boton" href="{% url 'register' %}">Registrarse</a>
                 {% else %}
-                <a class="btn btn-sm btn-outline-secondary" href="{% url 'logout' %}">Logout</a>
+
+                <a class="btn btn-sm  boton" href="{% url 'logout' %}">Logout</a>
                 {%endif%}
 
             </div>
         </div>
     </header>
 
-    <div class="nav-scroller py-1 mb-2">
+    <div class="nav-scroller py-1 mb-2 ">
         <nav class="nav d-flex "><!--justify-content-between-->
-            <a class="p-2 text-muted" href="">Home</a>
+            <a class="p-2 text-light" href="{% url 'index'%}">Home</a>
+               {% if user.is_staff or user.is_superuser %}
+                    <a class="p-2 text-muted" href="{% url 'post-crear' %}">Publicar Articulo</a>
+                {% endif %}
         </nav>
     </div>
 </div>

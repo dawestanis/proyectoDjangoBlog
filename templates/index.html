@@ -8,11 +8,11 @@
         <div class="col-md-6">
             <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-success">{{post.categoria| title}}</strong>
+                    <strong class="d-inline-block mb-2 text-secondary">{{post.categoria| title}}</strong>
                     <h3 class="mb-0">{{post.titulo|truncatechars:40}}</h3>
-                    <div class="mb-1 text-muted">{{post.fecha|date:'H:i Y d, M' }} Por {{post.autor.username}}</div>
-                    <p class="mb-auto">{{post.descripcion|truncatechars:120}}</p>
-                    <a href="" class="stretched-link">Leer más</a>
+                    <div class="mb-1 text-light">{{post.fecha|date:'H:i Y d, M' }} Por {{post.autor.username}}</div>
+                    <p class="mb-auto">{{post.descripcion|truncatechars:20}}</p>
+                    <a href="{% url 'post-detalle' pk=post.pk%}" class="stretched-link enlace">Leer más</a>
                 </div>
             </div>
         </div>
@@ -23,10 +23,10 @@
 
         {% if page_obj.has_previous %}
         <li>
-            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+            <a class="page-link boton" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
         </li>
         {% else %}
-        <li class="page-item disabled"><span class="page-link disabled">Anterior</span></li>
+        <li class="page-item disabled boton "><span class="page-link disabled boton">Anterior</span></li>
         {% endif %}
         {% for i in paginator.page_range %}
         {% if page_obj.number == i %}
@@ -36,14 +36,30 @@
         {% endif %}
         {% endfor %}
         {% if page_obj.has_next %}
-        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
+        <li class="page-item"><a class="page-link boton" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
         {% else %}
-        <li class="page-item disabled"><span class="page-link">Siguiente</span></li>
+        <li class="page-item disabled boton"><span class="page-link boton">Siguiente</span></li>
         {% endif %}
-        {% if user.is_authenticated %}
-        <a class="btn btn-success" href="{% url 'post-crear' %}">Publicar Articulo</a>
-        {% endif %}
+
     </ul>
 </div><!-- /.blog-main -->
+{%endblock%}
 
+{%block lateral%}
+  <aside class="col-md-4 blog-sidebar">
+
+
+
+                <div class="p-4">
+                    <h4 class="font-italic">Categorias</h4>
+                    <ol class="list-unstyled mb-0">
+                        {% for c in lista_categorias %}
+                            <li><a class="enlace" href="{% url 'index'%}?categoria={{c.pk}}">{{c.name|title}}</a></li>
+                        {% endfor%}
+                    </ol>
+                </div>
+
+
+
+        </aside><!-- /.blog-sidebar -->
 {%endblock%}

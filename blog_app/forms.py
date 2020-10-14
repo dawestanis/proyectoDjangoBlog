@@ -1,6 +1,7 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.forms import forms, ModelForm, TextInput, Select, ImageField, FileInput, Textarea
 
-from blog_app.models import Post
+from blog_app.models import Post, Usuario
 
 
 class PostForm(ModelForm):
@@ -18,3 +19,10 @@ class PostForm(ModelForm):
             'categoria': Select(attrs={'class': 'form-control'}),
             'image': FileInput(attrs={'class': 'form-control-file', 'accept': 'image/*'}),
         }
+
+
+class CrearUsuarioForm(UserCreationForm):
+
+    class Meta:
+        model = Usuario
+        fields = ["username", "password1", "password2"]

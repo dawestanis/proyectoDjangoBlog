@@ -1,26 +1,39 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
-from django.views import View
-from blog_app.forms import PostForm
-from blog_app.models import Post
+from django.views import View, generic
+from blog_app.forms import PostForm, CrearUsuarioForm
+from blog_app.mixin import AdminStaffRequiredMixin
+from blog_app.models import Post, Categoria
 
 
 class index(View):
 
-    def get(self, request,**kwargs):
-        lista_post = Post.objects.all()
-        paginator = Paginator(lista_post, 5)  # Muestra 5 post por pagina.
+    def get(self, request, **kwargs):
+        # Post
+        if 'categoria' in request.GET:
+            lista_post = Post.objects.filter(categoria=Categoria.objects.get(pk=request.GET.get('categoria')))
+        else:
+            lista_post = Post.objects.all()
+
+        paginator = Paginator(lista_post, 6)  # Muestra 6 post por pagina.
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
+        # Categorias
+        lista_categorias = Categoria.objects.all()
+        return render(request, "index.html", {
+            "page_obj": page_obj,
+            "lista_categorias": lista_categorias,
+        })
 
-        return render(request, "index.html", {"page_obj": page_obj})
 
-#hay que poner el login required (solo los usuarios logeados)
-class CrearPostView(LoginRequiredMixin,View):
-    #Crear los permisos de creacion de post (revisar)
+# hay que poner el login required (solo los usuarios logeados)
+class CrearPostView(AdminStaffRequiredMixin, View):
+    # Crear los permisos de creacion de post (revisar)
+    login_url = reverse_lazy('login')
 
     def get(self, request):
         post = PostForm()
@@ -48,4 +61,25 @@ class CrearPostView(LoginRequiredMixin,View):
 
         return render(request, "crearpost.html", {"form": post_form})
 
-#Debo crear un metodo que devuelva las categorias.
+
+# Debo crear un metodo que devuelva las categorias.
+
+class UserRegisterView(generic.CreateView):
+    form_class = CrearUsuarioForm
+    template_name = 'registration/register.html'
+    success_url = reverse_lazy('login')
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return redirect('index')
+        return super(UserRegisterView, self).dispatch(request, *args, **kwargs)
+
+
+class DetallesPostView(View):
+    def get(self, request, pk):
+        try:
+            post = Post.objects.get(pk=pk)
+            return render(request, "detalles_post.html", {"post": post})
+        except Exception as e:
+            print(e)
+            return redirect('index')
