@@ -7,7 +7,7 @@
                 {% comment %}
                 <a class="text-muted" href="#">Suscripción</a>
                 {% endcomment %}
-                <img src="{% static 'img/d20.png'%}" class="img-fluid" height="80" width="80">
+                <img src="{% static 'img/d20.png'%}" class="img-fluid" alt="dado-de-veinte" height="80" width="80">
             </div>
 
             <div class="col-4 text-center">
@@ -38,7 +38,7 @@
         <nav class="nav d-flex "><!--justify-content-between-->
             <a class="p-2 text-light" href="{% url 'index'%}">Home</a>
                {% if user.is_staff or user.is_superuser %}   <!-- lineas futuras filtrar por roles-->
-                    <a class="p-2 text-muted" href="{% url 'post-crear' %}">Publicar Articulo</a>
+                    <a class="p-2 text-light" href="{% url 'post-crear' %}">Publicar Articulo</a>
                 {% endif %}
         </nav>
     </div>

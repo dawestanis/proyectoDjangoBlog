@@ -4,17 +4,17 @@
 <form class="form" method="post" enctype="multipart/form-data" >
     {%csrf_token%} <!-- Añadimos este token para verificar la procedencia del formulario--->
     <div class="row">
-      <div class="col-6">Título: {{form.titulo}}</div>
-      <div class="col-6">Descripción: {{form.descripcion}}</div>
+      <div class="col-6"><label for="id_titulo">Título</label> {{form.titulo}}</div>
+      <div class="col-6"><label for="id_descripcion">Descripción</label> {{form.descripcion}}</div>
     </div>
     <br />
     <div class="row">
-      <div class="col-6">Imagen: {{form.image}}</div>
-      <div class="col-6">Categoría: {{form.categoria}}</div>
+      <div class="col-6"><label for="id_image">Imágen</label> {{form.image}}</div>
+      <div class="col-6"><label for="id_categoria">Categoría</label> {{form.categoria}}</div>
     </div>
     <br />
 
-    Contenidos:<br><br>
+    <label for="id_contenido">Contenidos</label><br><br>
     {{form.contenido}}
 
     <br />

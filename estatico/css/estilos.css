@@ -7,15 +7,18 @@ body{
 color:#F38D0B;
 font-weight:bold;
 }
+
 .enlace:hover{
 color:#95590C;
 text-decoration: none ;
 
 }
-
+.texto-categoria{
+color:#F38D0B;
+}
 .boton{
     background-color: #F38D0B;
-    color: white;
+    color: #222222;
     border: 1px solid #95590C;
 }
 
