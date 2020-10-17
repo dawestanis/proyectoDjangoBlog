@@ -11,6 +11,9 @@
            | <a href="">Borrar</a>
             {% endif %}
         </p>
+          {%if post.image%}
+          <img src="{{post.image.url}}">
+          {%endif%}
         <p>{{post.contenido | safe}}</p>
 
     </div><!-- /.blog-post -->
