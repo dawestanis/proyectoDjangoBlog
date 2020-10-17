@@ -117,9 +117,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'estatico')
+STATIC_ROOT = os.path.join(BASE_DIR, 'estatico')  # este comando habria que comentarlo para iniciar en local!!!!
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
+# Para iniciar en local habra que descomentar el codigo debajo de este comentario.
 """
 STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'estatico'),
