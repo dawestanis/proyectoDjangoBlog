@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 class Usuario(AbstractUser):
-    pass
+    editor = models.BooleanField(default=False)
 
 
 class Categoria(models.Model):
