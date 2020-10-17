@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'fj+cwf6_pu1tb8q!!^klll$gb^^n3r0_hw0o5$@!dv472ua8*2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -115,10 +115,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'estatico')
+STATIC_ROOT = os.path.join(BASE_DIR, 'estatico')
+"""
 STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'estatico'),
     ]
+"""
+
 # Establecer el usuario
 AUTH_USER_MODEL = 'blog_app.Usuario'
 
