@@ -119,6 +119,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'estatico')  # este comando habria que comentarlo para iniciar en local!!!!
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Para iniciar en local habra que descomentar el codigo debajo de este comentario.
 """
